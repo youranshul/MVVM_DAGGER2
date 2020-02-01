@@ -4,16 +4,17 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion rootProject.compileSdkVer
+    buildToolsVersion rootProject.buildToolsVer
     defaultConfig {
         applicationId "com.test.nymovie"
-        minSdkVersion 24
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.minSdkVer
+        targetSdkVersion rootProject.targetSdkVer
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
     }
     buildTypes {
         release {
@@ -25,11 +26,23 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    def appDependencies = rootProject.ext.appDependencies
+    def commonDependencies = rootProject.ext.commonDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    //Dagger
+    api  appDependencies.daggerAndroid
+    api  appDependencies.daggerAndroidSupport
+    kapt appDependencies.daggerAndroidProcessor
+    kapt appDependencies.daggerCompiler
+
+    //architecture
+    implementation appDependencies.appCompact
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.lifecycle
+
+    implementation commonDependencies.kotlinSetup
+    implementation commonDependencies.ktx
+
+    testImplementation testDependencies.junit
 }
