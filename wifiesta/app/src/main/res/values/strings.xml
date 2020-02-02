@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NyMovie</string>
+    <string name="title_hint">The Assistent</string>
+    <string name="movie_avtar">moview avtar</string>
+    <string name="headline_hint">Created Equal’ Review: A Justice of Few Words Finds His Voice</string>
+    <string name="pick_desc">icon to show which movies were picked</string>
+    <string name="reviewer">A. 0. Smith</string>
 </resources>

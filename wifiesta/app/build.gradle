@@ -30,19 +30,30 @@ dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
     def testDependencies = rootProject.ext.testDependencies
 
+    implementation project(':data')
+    implementation project(':domain')
+
     //Dagger
     api  appDependencies.daggerAndroid
     api  appDependencies.daggerAndroidSupport
     kapt appDependencies.daggerAndroidProcessor
     kapt appDependencies.daggerCompiler
 
+    //UI
+    implementation appDependencies.recyclerView
+    implementation appDependencies.cardView
+    implementation appDependencies.glide
+    kapt appDependencies.glideCompiler
+    implementation appDependencies.constraintLayout
+
     //architecture
     implementation appDependencies.appCompact
-    implementation appDependencies.constraintLayout
     implementation appDependencies.lifecycle
 
+    //kotlin
     implementation commonDependencies.kotlinSetup
     implementation commonDependencies.ktx
 
+    //test
     testImplementation testDependencies.junit
 }

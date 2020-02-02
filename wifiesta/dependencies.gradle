@@ -2,6 +2,9 @@ ext {
     appcompat_version = "1.1.0"
     constraintLayoutVersion = "1.1.3"
     lifecycle_ver = "2.1.0-beta01"
+    recycler_ver = "1.1.0"
+    cardViewVer = "1.0.0"
+    glideVer = "4.9.0"
 
     //Kotlin Related
     core_ktx_version = "1.1.0"
@@ -28,6 +31,10 @@ ext {
     appDependencies = [
             appCompact            : "androidx.appcompat:appcompat:$appcompat_version",
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            recyclerView          : "androidx.recyclerview:recyclerview:$recycler_ver",
+            cardView              : "androidx.cardview:cardview:$cardViewVer",
+            glide                 : "com.github.bumptech.glide:glide:$glideVer",
+            glideCompiler         : "com.github.bumptech.glide:compiler:$glideVer",
             lifecycle             : "androidx.lifecycle:lifecycle-extensions:$lifecycle_ver",
             lifeCycleCompile      : "androidx.lifecycle:lifecycle-compiler:$lifecycle_ver",
             stetho                : "com.facebook.stetho:stetho:${stetho_version}",

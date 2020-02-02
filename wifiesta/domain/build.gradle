@@ -2,6 +2,9 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def commonDependencies = rootProject.ext.commonDependencies
+
+    implementation commonDependencies.kotlinSetup
 }
 
 sourceCompatibility = "7"

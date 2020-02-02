@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="review_item_title_style" >
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+
 </resources>
