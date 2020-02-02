@@ -46,7 +46,7 @@ class MovieFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getMovieReviews().observe(this, Observer {
+        viewModel.loadMovieReviews().observe(this, Observer {
             adapter = MovieReviewsAdapter(it)
             recycleView.adapter = adapter
         })

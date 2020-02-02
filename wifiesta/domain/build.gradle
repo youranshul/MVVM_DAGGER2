@@ -5,6 +5,7 @@ dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
 
     implementation commonDependencies.kotlinSetup
+    implementation commonDependencies.rxjava
 }
 
 sourceCompatibility = "7"

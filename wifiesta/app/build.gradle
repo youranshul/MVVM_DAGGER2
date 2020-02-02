@@ -52,7 +52,10 @@ dependencies {
 
     //kotlin
     implementation commonDependencies.kotlinSetup
-    implementation commonDependencies.ktx
+
+    //rx
+    api commonDependencies.rxjava
+    implementation appDependencies.rxjavaAndroid
 
     //test
     testImplementation testDependencies.junit

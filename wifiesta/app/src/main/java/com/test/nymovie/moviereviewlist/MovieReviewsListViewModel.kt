@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class MovieReviewsListViewModel @Inject constructor() : ViewModel() {
 
-    fun getMovieReviews(): LiveData<List<MovieReview>> {
+    fun loadMovieReviews(): LiveData<List<MovieReview>> {
 
         val list = mutableListOf<MovieReview>()
         list.add(MovieReview("Incitment", "A O Smith", "", ""))
