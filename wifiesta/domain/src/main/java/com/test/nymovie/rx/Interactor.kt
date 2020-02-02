@@ -1,3 +1,5 @@
+package com.test.nymovie.rx
+
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.SingleObserver

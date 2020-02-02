@@ -15,6 +15,9 @@ internal abstract class movieReviewListModule {
     @ContributesAndroidInjector
     internal abstract fun contributeMovieFragment(): MovieFragment
 
+   /* @Binds
+    internal abstract fun bindsInteractor(getFetchReviewsInteractor: GetFetchReviewsInteractor): SingleInteractor<Unit, List<MovieReview>>*/
+
     @Binds
     @IntoMap
     @ViewModelKey(MovieReviewsListViewModel::class)

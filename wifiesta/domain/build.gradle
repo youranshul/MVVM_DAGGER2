@@ -6,6 +6,7 @@ dependencies {
 
     implementation commonDependencies.kotlinSetup
     implementation commonDependencies.rxjava
+    implementation commonDependencies.dagger
 }
 
 sourceCompatibility = "7"

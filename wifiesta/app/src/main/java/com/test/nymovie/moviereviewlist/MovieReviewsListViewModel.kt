@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
-class MovieReviewsListViewModel @Inject constructor() : ViewModel() {
+class MovieReviewsListViewModel @Inject constructor(private val interactor: GetFetchReviewsInteractor) : ViewModel() {
 
     fun loadMovieReviews(): LiveData<List<MovieReview>> {
 
