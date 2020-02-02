@@ -56,7 +56,6 @@ ext {
             retrofit        : "com.squareup.retrofit2:retrofit:${retrofit_version}",
             jacksonMapper   : "com.fasterxml.jackson.module:jackson-module-kotlin:${jackson_version}",
             rxjavaAdapter   : "com.squareup.retrofit2:adapter-rxjava2:${adapter_rxjava_version}",
-            dagger          : "com.google.dagger:dagger:${dagger_version}",
             jacksonConverter: "com.squareup.retrofit2:converter-jackson:${jackson_converter}",
             okhttpLogging   : "com.squareup.okhttp3:logging-interceptor:${okhttpLogging}"
     ]

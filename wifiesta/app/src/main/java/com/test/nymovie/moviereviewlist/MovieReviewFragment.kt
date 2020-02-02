@@ -13,7 +13,7 @@ import com.test.nymovie.R
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class MovieFragment : DaggerFragment() {
+class MovieReviewFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

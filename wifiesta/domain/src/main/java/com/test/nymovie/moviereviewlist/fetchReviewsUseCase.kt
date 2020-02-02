@@ -12,13 +12,17 @@ class GetFetchReviewsInteractor @Inject constructor(
     executionThread: ExecutionThread,
     postExecutionThread: PostExecutionThread,
     private val fetchReviewsService: FetchReviewService
-) : SingleInteractor<List<MovieReview>, Unit>(executionThread, postExecutionThread) {
-    override fun buildUseCase(params: Unit?): Single<List<MovieReview>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+) : SingleInteractor<MutableList<MovieReview>, Unit>(executionThread, postExecutionThread) {
+    override fun buildUseCase(params: Unit?): Single<MutableList<MovieReview>> {
+        return fetchReviewsService.loadReviews()
     }
 
 }
 
-class FetchReviewService @Inject constructor() {
+class FetchReviewService @Inject constructor(private val nyMovieReviewService: NyMovieReviewService) {
+
+    fun loadReviews(): Single<MutableList<MovieReview>> {
+        return nyMovieReviewService.loadReviews()
+    }
 
 }

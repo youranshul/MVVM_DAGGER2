@@ -30,14 +30,18 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
         private val imageView = itemView.findViewById<ImageView>(R.id.avtar)
         private val titleView = itemView.findViewById<TextView>(R.id.title)
         private val reviewerView = itemView.findViewById<TextView>(R.id.byline)
-
-        private val testImage =
-            "https://static01.nyt.com/images/2020/01/31/arts/created1/created1-mediumThreeByTwo210.jpg"
+        private val pickView = itemView.findViewById<ImageView>(R.id.pick)
 
         fun bind(review: MovieReview) {
             titleView.text = review.title
             reviewerView.text = review.byline
-            Glide.with(itemView.context).load(testImage).centerCrop().placeholder(
+
+            pickView.visibility = when (review.isPicked) {
+                true -> View.VISIBLE
+                false -> View.INVISIBLE
+            }
+
+            Glide.with(itemView.context).load(review.imageUrl).centerCrop().placeholder(
                 ColorDrawable(Color.GRAY)
             ).into(imageView)
         }

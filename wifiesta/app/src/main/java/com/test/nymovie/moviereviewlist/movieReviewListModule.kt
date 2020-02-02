@@ -13,10 +13,11 @@ internal abstract class movieReviewListModule {
 
     @FragmentScoped
     @ContributesAndroidInjector
-    internal abstract fun contributeMovieFragment(): MovieFragment
+    internal abstract fun contributeMovieFragment(): MovieReviewFragment
 
-   /* @Binds
-    internal abstract fun bindsInteractor(getFetchReviewsInteractor: GetFetchReviewsInteractor): SingleInteractor<Unit, List<MovieReview>>*/
+  /*  @Binds
+    @FragmentScoped
+    internal abstract fun bindsNyMovieReviewService(nyMovieReviewsGateway: NyMovieReviewsGateway): NyMovieReviewService*/
 
     @Binds
     @IntoMap
