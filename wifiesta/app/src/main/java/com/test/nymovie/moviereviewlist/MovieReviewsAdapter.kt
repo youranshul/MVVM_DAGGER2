@@ -31,11 +31,12 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
         private val titleView = itemView.findViewById<TextView>(R.id.title)
         private val reviewerView = itemView.findViewById<TextView>(R.id.byline)
         private val pickView = itemView.findViewById<ImageView>(R.id.pick)
+        private val headlineView = itemView.findViewById<TextView>(R.id.headline)
 
         fun bind(review: MovieReview) {
             titleView.text = review.title
             reviewerView.text = review.byline
-
+            headlineView.text = review.headline
             pickView.visibility = when (review.isPicked) {
                 true -> View.VISIBLE
                 false -> View.INVISIBLE

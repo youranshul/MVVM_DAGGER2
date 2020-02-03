@@ -5,4 +5,7 @@
     <string name="headline_hint">Created Equal’ Review: A Justice of Few Words Finds His Voice</string>
     <string name="pick_desc">icon to show which movies were picked</string>
     <string name="reviewer">A. 0. Smith</string>
+    <string name="failed_review_load">Failed to load movie reviews.</string>
+    <string name="no_network">It seems you have lost internet.</string>
+    <string name="network_available">Internet is back.</string>
 </resources>

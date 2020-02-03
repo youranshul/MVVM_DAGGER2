@@ -45,6 +45,7 @@ dependencies {
     implementation appDependencies.glide
     kapt appDependencies.glideCompiler
     implementation appDependencies.constraintLayout
+    implementation appDependencies.design
 
     //architecture
     implementation appDependencies.appCompact
