@@ -8,4 +8,6 @@
     <string name="failed_review_load">Failed to load movie reviews.</string>
     <string name="no_network">It seems you have lost internet.</string>
     <string name="network_available">Internet is back.</string>
+    <string name="search_title">Search by title</string>
+    <string name="search_hint">Search by title</string>
 </resources>

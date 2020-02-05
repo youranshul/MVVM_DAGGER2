@@ -1,5 +1,6 @@
 package com.test.nymovie.moviereviewlist
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,5 +44,13 @@ class MovieReviewsListViewModel @Inject constructor(private val interactor: GetF
     override fun onCleared() {
         compositeDisposable.dispose()
         super.onCleared()
+    }
+
+    fun onQueryChanged(newText: String?) {
+        newText?.let {
+            if (newText.length > 2) {
+                Log.i("Ansh:", "search : $newText")
+            }
+        }
     }
 }

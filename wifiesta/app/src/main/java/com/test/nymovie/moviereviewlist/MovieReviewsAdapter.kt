@@ -5,6 +5,8 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +15,14 @@ import com.test.nymovie.R
 import com.test.nymovie.moviereviewlist.MovieReviewsAdapter.MovieReviewViewHolder
 
 class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
-    RecyclerView.Adapter<MovieReviewViewHolder>() {
+    RecyclerView.Adapter<MovieReviewViewHolder>(), Filterable {
+
+    private val localMovieReviewsList = ArrayList(movieReviews)
+
+    override fun getFilter(): Filter {
+        return reviewsFilter
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieReviewViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.review_item, parent, false)
         return MovieReviewViewHolder(view)
@@ -45,6 +54,33 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
             Glide.with(itemView.context).load(review.imageUrl).centerCrop().placeholder(
                 ColorDrawable(Color.GRAY)
             ).into(imageView)
+        }
+    }
+
+    private val reviewsFilter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList = ArrayList<MovieReview>()
+            if (constraint == null || constraint.isEmpty()) {
+                filteredList.addAll(localMovieReviewsList)
+            } else {
+                val pattern = constraint.toString().trim()
+                localMovieReviewsList.forEach {
+                    if (it.title.startsWith(pattern, true)) {
+                        filteredList.add(it)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            results?.let {
+                (movieReviews as ArrayList).clear()
+                movieReviews.addAll(it.values as ArrayList<MovieReview>)
+                notifyDataSetChanged()
+            }
         }
 
     }

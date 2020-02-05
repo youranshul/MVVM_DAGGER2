@@ -10,28 +10,28 @@ class MovieReviewsResponseMapper @Inject constructor() :
 
         val reviews = mutableListOf<MovieReview>()
         data.results.forEach { review ->
-            val isPicked = review.pick == 1
-            var title = ""
-            var reviewer = ""
-            var headline = ""
-            var src = ""
-            review.title?.let {
-                title = it
-            }
-            review.reviewer?.let {
-                reviewer = it
-            }
-            review.headline?.let {
-                headline = it
-            }
-            review.media?.let {
-                it.imageUrl?.let {
-                    src = it
+            if(!review.title.isNullOrBlank()){
+                val isPicked = review.pick == 1
+                var reviewer = ""
+                var headline = ""
+                var src = ""
+
+                review.reviewer?.let {
+                    reviewer = it
                 }
+                review.headline?.let {
+                    headline = it
+                }
+                review.media?.let {
+                    it.imageUrl?.let {
+                        src = it
+                    }
+                }
+
+                val movieReview = MovieReview(review.title, reviewer, headline, src, isPicked)
+                reviews.add(movieReview)
             }
 
-            val movieReview = MovieReview(title, reviewer, headline, src, isPicked)
-            reviews.add(movieReview)
         }
 
         return reviews

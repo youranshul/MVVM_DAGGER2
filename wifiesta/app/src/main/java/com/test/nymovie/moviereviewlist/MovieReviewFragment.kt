@@ -1,10 +1,9 @@
 package com.test.nymovie.moviereviewlist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +15,15 @@ import com.test.nymovie.R
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class MovieReviewFragment : DaggerFragment() {
+class MovieReviewFragment : DaggerFragment(), SearchView.OnQueryTextListener {
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        adapter?.filter?.filter(newText)
+        return true
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -30,6 +37,11 @@ class MovieReviewFragment : DaggerFragment() {
     private lateinit var errorView: TextView
 
     private var adapter: MovieReviewsAdapter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,6 +83,15 @@ class MovieReviewFragment : DaggerFragment() {
             adapter = MovieReviewsAdapter(it)
             recycleView.adapter = adapter
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.options_menu, menu)
+        val menuItem = menu.findItem(R.id.app_bar_search)
+        val searchView = menuItem.actionView as SearchView
+        searchView.setOnQueryTextListener(this)
+        searchView.queryHint = resources.getString(R.string.search_hint)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun networkAvailable() {
