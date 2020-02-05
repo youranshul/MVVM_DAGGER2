@@ -6,6 +6,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion rootProject.compileSdkVer
     buildToolsVersion rootProject.buildToolsVer
@@ -15,6 +19,9 @@ android {
         targetSdkVersion rootProject.targetSdkVer
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+
+        buildConfigField("String", "API_KEY", apikeyProperties['API_KEY'])
+        buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL'])
     }
     buildTypes {
         release {
@@ -27,7 +34,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def appDependencies = rootProject.ext.appDependencies
-    def commonDependencies = rootProject.ext.commonDependencies
     def testDependencies = rootProject.ext.testDependencies
 
     implementation project(':data')
@@ -51,11 +57,7 @@ dependencies {
     implementation appDependencies.appCompact
     implementation appDependencies.lifecycle
 
-    //kotlin
-    implementation commonDependencies.kotlinSetup
-
     //rx
-    api commonDependencies.rxjava
     implementation appDependencies.rxjavaAndroid
 
     //test

@@ -2,20 +2,15 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    def commonDependencies = rootProject.ext.commonDependencies
     def dataDependencies = rootProject.ext.dataDependencies
 
     implementation project(':domain')
 
-    implementation commonDependencies.kotlinSetup
-    implementation commonDependencies.rxjava
-    implementation commonDependencies.dagger
-
-    implementation dataDependencies.retrofit
-    implementation dataDependencies.rxjavaAdapter
-    implementation dataDependencies.jacksonConverter
-    implementation dataDependencies.okhttpLogging
-    implementation dataDependencies.jacksonMapper
+    api dataDependencies.retrofit
+    api dataDependencies.rxjavaAdapter
+    api dataDependencies.jacksonConverter
+    api dataDependencies.okhttpLogging
+    api dataDependencies.jacksonMapper
 }
 
 sourceCompatibility = "7"

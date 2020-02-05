@@ -4,9 +4,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def commonDependencies = rootProject.ext.commonDependencies
 
-    implementation commonDependencies.kotlinSetup
-    implementation commonDependencies.rxjava
-    implementation commonDependencies.dagger
+    api commonDependencies.kotlinSetup
+    api commonDependencies.rxjava
+    api commonDependencies.dagger
 }
 
 sourceCompatibility = "7"

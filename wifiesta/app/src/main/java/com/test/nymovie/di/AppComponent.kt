@@ -15,7 +15,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         ViewModelModule::class,
         ActivityBindingModule::class,
-        AppModule::class
+        AppModule::class,
+        RetrofitModule::class
     ]
 )
 interface AppComponent : AndroidInjector<NyMovieApp> {
