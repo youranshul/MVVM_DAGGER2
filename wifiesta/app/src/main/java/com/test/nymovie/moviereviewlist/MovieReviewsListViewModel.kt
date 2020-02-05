@@ -4,12 +4,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.test.nymovie.ScreenNavigation
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-class MovieReviewsListViewModel @Inject constructor(private val interactor: GetFetchReviewsInteractor) :
+class MovieReviewsListViewModel @Inject constructor(
+    private val interactor: GetFetchReviewsInteractor,
+    private val navigator: ScreenNavigation<ReviewQueryData>
+) :
     ViewModel() {
 
 
@@ -52,5 +56,10 @@ class MovieReviewsListViewModel @Inject constructor(private val interactor: GetF
                 Log.i("Ansh:", "search : $newText")
             }
         }
+    }
+
+    fun onItemClick(title: String, reviewer: String) {
+        val data = ReviewQueryData(title, reviewer)
+        navigator.navigateTo(data)
     }
 }

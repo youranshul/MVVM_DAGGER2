@@ -7,3 +7,6 @@ data class MovieReview(
     val imageUrl: String,
     val isPicked: Boolean
 )
+
+data class ReviewQueryData(val title: String, val reviewer: String)
+

@@ -14,7 +14,10 @@ import com.bumptech.glide.Glide
 import com.test.nymovie.R
 import com.test.nymovie.moviereviewlist.MovieReviewsAdapter.MovieReviewViewHolder
 
-class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
+class MovieReviewsAdapter(
+    private val movieReviews: List<MovieReview>,
+    private val listener: OnMovieItemClickListener
+) :
     RecyclerView.Adapter<MovieReviewViewHolder>(), Filterable {
 
     private val localMovieReviewsList = ArrayList(movieReviews)
@@ -31,7 +34,7 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
     override fun getItemCount(): Int = movieReviews.size
 
     override fun onBindViewHolder(holder: MovieReviewViewHolder, position: Int) {
-        holder.bind(movieReviews[position])
+        holder.bind(movieReviews[position], listener)
     }
 
     inner class MovieReviewViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -42,7 +45,10 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
         private val pickView = itemView.findViewById<ImageView>(R.id.pick)
         private val headlineView = itemView.findViewById<TextView>(R.id.headline)
 
-        fun bind(review: MovieReview) {
+        fun bind(
+            review: MovieReview,
+            listener: OnMovieItemClickListener
+        ) {
             titleView.text = review.title
             reviewerView.text = review.byline
             headlineView.text = review.headline
@@ -54,6 +60,10 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
             Glide.with(itemView.context).load(review.imageUrl).centerCrop().placeholder(
                 ColorDrawable(Color.GRAY)
             ).into(imageView)
+
+            itemView.setOnClickListener {
+                listener.onItemClicked(review.title, review.byline)
+            }
         }
     }
 
@@ -86,4 +96,8 @@ class MovieReviewsAdapter(private val movieReviews: List<MovieReview>) :
     }
 }
 
+interface OnMovieItemClickListener {
+
+    fun onItemClicked(title: String, reviewer: String)
+}
 

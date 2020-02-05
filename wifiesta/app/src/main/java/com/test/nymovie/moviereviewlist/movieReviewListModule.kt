@@ -15,6 +15,10 @@ internal abstract class movieReviewListModule {
     @ContributesAndroidInjector
     internal abstract fun contributeMovieFragment(): MovieReviewFragment
 
+    @FragmentScoped
+    @ContributesAndroidInjector
+    internal abstract fun contributeReviewDetailsFragment(): ReviewDetailsFragment
+
   /*  @Binds
     @FragmentScoped
     internal abstract fun bindsNyMovieReviewService(nyMovieReviewsGateway: NyMovieReviewsGateway): NyMovieReviewService*/

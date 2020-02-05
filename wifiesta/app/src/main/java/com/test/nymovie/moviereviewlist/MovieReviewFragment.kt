@@ -15,7 +15,13 @@ import com.test.nymovie.R
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class MovieReviewFragment : DaggerFragment(), SearchView.OnQueryTextListener {
+class MovieReviewFragment : DaggerFragment(), SearchView.OnQueryTextListener,
+    OnMovieItemClickListener {
+
+    override fun onItemClicked(title: String, reviewer: String) {
+        viewModel.onItemClick(title, reviewer)
+    }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
         return true
     }
@@ -80,7 +86,7 @@ class MovieReviewFragment : DaggerFragment(), SearchView.OnQueryTextListener {
         })
 
         viewModel.loadMovieReviews().observe(this, Observer {
-            adapter = MovieReviewsAdapter(it)
+            adapter = MovieReviewsAdapter(it, this)
             recycleView.adapter = adapter
         })
     }
