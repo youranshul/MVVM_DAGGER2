@@ -3,6 +3,8 @@ apply plugin: 'kotlin'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def dataDependencies = rootProject.ext.dataDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
 
     implementation project(':domain')
 
@@ -10,6 +12,10 @@ dependencies {
     api dataDependencies.rxjavaAdapter
     api dataDependencies.jacksonConverter
     api dataDependencies.jacksonMapper
+
+    testApi testDependencies.junit
+    testApi testDependencies.mockito
+    testApi testDependencies.mockito_inline
 }
 
 sourceCompatibility = "7"

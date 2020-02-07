@@ -85,5 +85,13 @@
     <orderEntry type="library" exported="" name="Gradle: okio-1.15.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: kotlin-stdlib-common-1.3.40" level="project" />
     <orderEntry type="library" exported="" name="Gradle: annotations-13.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: junit-4.12" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: mockito-kotlin-2.0.0-RC3" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: mockito-inline-2.8.9" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: mockito-core-2.23.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: byte-buddy-1.9.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: byte-buddy-agent-1.9.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: objenesis-2.6" level="project" />
   </component>
 </module>

@@ -61,5 +61,7 @@ dependencies {
     implementation appDependencies.rxjavaAndroid
 
     //test
-    testImplementation testDependencies.junit
+    testApi testDependencies.junit
+    testApi testDependencies.mockito
+    testApi testDependencies.mockito_inline
 }
