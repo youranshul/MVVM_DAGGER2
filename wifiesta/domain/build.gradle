@@ -3,10 +3,16 @@ apply plugin: 'kotlin'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def commonDependencies = rootProject.ext.commonDependencies
+    def testDependencies = rootProject.ext.testDependencies
 
     api commonDependencies.kotlinSetup
     api commonDependencies.rxjava
     api commonDependencies.dagger
+
+    //Tests
+    testApi testDependencies.junit
+    testApi testDependencies.mockito
+    testApi testDependencies.mockito_inline
 }
 
 sourceCompatibility = "7"

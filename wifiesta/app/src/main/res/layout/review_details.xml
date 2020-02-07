@@ -1,12 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@color/colorAccent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="invisible"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/reviewBigImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/reviewdeatilsImageHeight"
+        android:contentDescription="@string/detail_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headline"
+        app:layout_constraintBottom_toBottomOf="@id/reviewBigImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="The Assistent is a very good movie The Assistent is a very good movie The Assistent is a very good movie"
+        style="@style/reviewDetailsHeadlineText" />
+
+    <TextView
+        android:id="@+id/criticsPick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginAllSides5dp"
+        android:drawableStart="@drawable/ic_pick"
+        android:drawablePadding="@dimen/margin5"
+        android:gravity="center"
+        android:text="@string/critics_pick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewBigImage"
+        style="@style/reviewDetailsTextStyle" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginAllSides5dp"
+        android:gravity="center"
+        android:minWidth="0.5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewBigImage">
+
+        <TextView
+            style="@style/reviewDetailsTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/rating"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="1" />
+
+        <TextView
+            android:id="@+id/rating"
+            style="@style/reviewDetailsTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="1"
+            tools:text="PG-13" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/shortDesc"
+        style="@style/reviewDetailsTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
-</LinearLayout>
+        android:layout_margin="@dimen/marginAllSides5dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/criticsPick"
+        tools:text="A teenager uses online romantic connections to escape the oppression of his hometown." />
+
+    <TextView
+        android:id="@+id/readMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margintop10"
+        android:text="@string/readMore"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

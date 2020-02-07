@@ -9,7 +9,6 @@ dependencies {
     api dataDependencies.retrofit
     api dataDependencies.rxjavaAdapter
     api dataDependencies.jacksonConverter
-    api dataDependencies.okhttpLogging
     api dataDependencies.jacksonMapper
 }
 

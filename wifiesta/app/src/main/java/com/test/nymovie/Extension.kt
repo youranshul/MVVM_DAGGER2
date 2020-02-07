@@ -1,5 +1,7 @@
 package com.test.nymovie
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -13,5 +15,9 @@ inline fun FragmentManager.doTransaction(
 }
 
 fun AppCompatActivity.replaceFragment(frameId: Int, fragment: Fragment) {
-    supportFragmentManager.doTransaction { replace(frameId, fragment).addToBackStack("") }
+    supportFragmentManager.doTransaction { replace(frameId, fragment).addToBackStack(null) }
+}
+
+fun AppCompatActivity.openWeb(url: String) {
+    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
 }

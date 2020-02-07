@@ -4,6 +4,7 @@ import com.test.nymovie.R
 import com.test.nymovie.ScreenNavigation
 import com.test.nymovie.core.MainActivity
 import com.test.nymovie.replaceFragment
+import com.test.nymovie.reviewdetails.ReviewDetailsFragment
 import javax.inject.Inject
 
 class ReviewDetailsScreen @Inject constructor(private val activity: MainActivity) :

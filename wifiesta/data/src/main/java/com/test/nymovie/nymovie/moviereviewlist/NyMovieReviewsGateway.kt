@@ -14,7 +14,7 @@ class NyMovieReviewsGateway @Inject constructor(
     NyMovieReviewService {
 
     override fun loadReviews(): Single<MutableList<MovieReview>> {
-        return retrofit.create(NyMoviesService::class.java).getReviews().map {
+        return retrofit.create(NyMovieReviewsApi::class.java).getReviews().map {
             movieReviewsResponseMapper.transform(it)
         }.map {
             it.sortBy { model ->

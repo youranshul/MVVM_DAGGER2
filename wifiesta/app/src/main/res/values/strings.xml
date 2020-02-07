@@ -10,4 +10,9 @@
     <string name="network_available">Internet is back.</string>
     <string name="search_title">Search by title</string>
     <string name="search_hint">Search by title</string>
+    <string name="detail_image">here come the big image</string>
+    <string name="rating">Rating:</string>
+    <string name="critics_pick">Critics Pick</string>
+    <string name="screenTitle">Top Reviews</string>
+    <string name="readMore">Read More…</string>
 </resources>

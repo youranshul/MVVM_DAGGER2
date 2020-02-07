@@ -9,4 +9,3 @@ data class MovieReview(
 )
 
 data class ReviewQueryData(val title: String, val reviewer: String)
-
