@@ -27,4 +27,40 @@
 }
 
 # for DexGuard only
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+-keep class com.test.nymovie.** { *; }
+
+########--------Retrofit + RxJava--------#########
+-dontwarn rx.**
+
+-dontwarn okio.**
+
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+-keep class retrofit.** { *; }
+
+-keepattributes Signature
+-keepattributes *Annotation*
+
+#proguard for jackson
+-keep class kotlin.Metadata { *; }
+-keep class kotlin.reflect.** { *; }
+-keepclassmembers public class com.test.nymovie.nymovie.** {*;}
+
+-keep class com.fasterxml.jackson.databind.ObjectMapper {
+    public <methods>;
+    protected <methods>;
+}
+-keep class com.fasterxml.jackson.databind.ObjectWriter {
+    public ** writeValueAsString(**);
+}
+-keep @com.fasterxml.jackson.annotation.* class * { *; }
+-keep @com.fasterxml.jackson.annotation.** class * { *; }
+-keep class com.fasterxml.** { *; }
+-keepattributes *Annotation*,EnclosingMethod,Signature,Exceptions,InnerClasses
+-keep class * {
+    @com.fasterxml.jackson.annotation.* *;
+}
+-keep class * { @com.fasterxml.jackson.annotation.JsonProperty *;}
