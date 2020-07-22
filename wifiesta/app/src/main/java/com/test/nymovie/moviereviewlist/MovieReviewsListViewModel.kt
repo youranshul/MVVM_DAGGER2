@@ -2,6 +2,7 @@ package com.test.nymovie.moviereviewlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation
 import com.test.nymovie.ScreenNavigation
 import com.test.nymovie.core.BaseViewModel
 import javax.inject.Inject
@@ -24,10 +25,5 @@ class MovieReviewsListViewModel @Inject constructor(
             })
         )
         return reviewLiveData
-    }
-
-    fun onItemClick(title: String, reviewer: String) {
-        val data = ReviewQueryData(title, reviewer)
-        navigator.navigateTo(data)
     }
 }

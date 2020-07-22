@@ -42,9 +42,8 @@ abstract class BaseDaggerFragment : DaggerFragment() {
     }
 
 
-
     private fun bindUiSignalLiveData() {
-        getUiSignalLiveData().observe(this, Observer {
+        getUiSignalLiveData().observe(viewLifecycleOwner, Observer {
             when (it) {
                 UiSignal.LOADING_VISIBLE -> progressBar?.visibility = View.VISIBLE
                 UiSignal.LOADING_GONE -> progressBar?.visibility = View.GONE

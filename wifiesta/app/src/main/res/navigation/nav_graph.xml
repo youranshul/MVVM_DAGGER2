@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieReviewFragment">
+
+    <fragment
+        android:id="@+id/movieReviewFragment"
+        android:name="com.test.nymovie.moviereviewlist.MovieReviewFragment"
+        android:label="MovieReviewFragment">
+        <action
+            android:id="@+id/action_movieReviewFragment_to_reviewDetailsFragment2"
+            app:destination="@id/reviewDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewDetailsFragment2"
+        android:name="com.test.nymovie.reviewdetails.ReviewDetailsFragment"
+        android:label="ReviewDetailsFragment">
+        <argument
+            android:name="title"
+            android:defaultValue="Top Reviews"
+            app:argType="string" />
+        <argument
+            android:name="reviewer"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+</navigation>

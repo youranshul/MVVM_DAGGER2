@@ -5,14 +5,17 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.nymovie.R
 import com.test.nymovie.core.BaseDaggerFragment
+import com.test.nymovie.reviewdetails.ReviewDetailsFragment
 import javax.inject.Inject
 
 class MovieReviewFragment : BaseDaggerFragment(), SearchView.OnQueryTextListener,
@@ -23,7 +26,14 @@ class MovieReviewFragment : BaseDaggerFragment(), SearchView.OnQueryTextListener
     }
 
     override fun onItemClicked(title: String, reviewer: String) {
-        viewModel.onItemClick(title, reviewer)
+        findNavController().navigate(
+            R.id.action_movieReviewFragment_to_reviewDetailsFragment2,
+            bundleOf(
+                ReviewDetailsFragment.TITLE to title,
+                ReviewDetailsFragment.REVIEWER to reviewer
+            )
+        )
+        // viewModel.onItemClick(title, reviewer)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -51,6 +61,7 @@ class MovieReviewFragment : BaseDaggerFragment(), SearchView.OnQueryTextListener
     }
 
     override fun onViewCreationCompleted(view: View) {
+        activity?.setTitle(R.string.screenTitle)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(MovieReviewsListViewModel::class.java)
         val viewManager = LinearLayoutManager(requireContext())
@@ -59,18 +70,15 @@ class MovieReviewFragment : BaseDaggerFragment(), SearchView.OnQueryTextListener
             layoutManager = viewManager
 
         }
+
+        viewModel.loadMovieReviews().observe(viewLifecycleOwner, Observer {
+            adapter = MovieReviewsAdapter(it, this)
+            recycleView.adapter = adapter
+        })
     }
 
     override fun getUiSignalLiveData(): MutableLiveData<UiSignal> {
         return viewModel.provideUiSignalLiveData()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel.loadMovieReviews().observe(this, Observer {
-            adapter = MovieReviewsAdapter(it, this)
-            recycleView.adapter = adapter
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -78,6 +86,7 @@ class MovieReviewFragment : BaseDaggerFragment(), SearchView.OnQueryTextListener
         val menuItem = menu.findItem(R.id.app_bar_search)
         val searchView = menuItem.actionView as SearchView
         searchView.apply {
+            isIconifiedByDefault = false
             queryHint = resources.getString(R.string.search_hint)
         }
         searchView.setOnQueryTextListener(this)

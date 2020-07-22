@@ -11,10 +11,10 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setTitle()
+       // setTitle()
     }
 
-    private fun setTitle() {
+    /*private fun setTitle() {
         title = resources.getString(R.string.screenTitle)
         supportFragmentManager.addOnBackStackChangedListener {
 
@@ -25,5 +25,5 @@ class MainActivity : DaggerAppCompatActivity() {
             }
 
         }
-    }
+    }*/
 }

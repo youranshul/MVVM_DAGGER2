@@ -31,8 +31,8 @@ class ReviewDetailsFragment : BaseDaggerFragment() {
     }
 
     companion object {
-        private const val TITLE = "movieTitle"
-        private const val REVIEWER = "reviewer"
+         const val TITLE = "movieTitle"
+         const val REVIEWER = "reviewer"
 
         fun newInstance(data: ReviewQueryData): Fragment {
             val fragment = ReviewDetailsFragment()
@@ -93,10 +93,6 @@ class ReviewDetailsFragment : BaseDaggerFragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
 
     private fun handleRatingView(data: ReviewDetails) {
         ratingTv.text = when (data.rating.isBlank()) {
@@ -116,10 +112,5 @@ class ReviewDetailsFragment : BaseDaggerFragment() {
         Glide.with(requireActivity()).load(imageUrl).centerCrop().placeholder(
             ColorDrawable(Color.GRAY)
         ).into(image)
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        menu.findItem(R.id.app_bar_search).isVisible = false
-        super.onPrepareOptionsMenu(menu)
     }
 }
